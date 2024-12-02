@@ -9,3 +9,4 @@
 *log*
 *.local*
 test/.*
+.idea
