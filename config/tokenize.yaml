@@ -61,7 +61,7 @@ model:
   quant_loss_weight: 1.
 
 data:
-  root: path/to/data
+  root: /home/sm/Datasets/open-genie
   env_name: Coinrun
   padding: none
   randomize: true
