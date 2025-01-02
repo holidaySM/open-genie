@@ -6,7 +6,7 @@ from os import makedirs
 import argparse
 from tqdm.auto import trange
 
-ROOT = '/home/sm/Datasets/open-genie'
+ROOT = '/Users/iseungmin/Datasets/open-genie'
 
 
 def save_frames_to_video(frames, output_file, fps=30):
@@ -58,7 +58,7 @@ def main(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Generate videos of a gym environment')
     parser.add_argument('--env_name', type=str, default='Coinrun', help='Name of the environment')
-    parser.add_argument('--num_envs', type=int, default=1, help='Number of samples to generate')
+    parser.add_argument('--num_envs', type=int, default=10, help='Number of samples to generate')
     parser.add_argument('--timeout', type=int, default=1000, help='Timeout for generating samples')
     parser.add_argument('--root', type=str, default=ROOT, help='Root folder where to save the videos')
 
