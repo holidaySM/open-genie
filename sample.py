@@ -6,7 +6,7 @@ from os import makedirs
 import argparse
 from tqdm.auto import trange
 
-ROOT = '/Users/iseungmin/Datasets/open-genie'
+ROOT = '/home/sm/Datasets/open-genie'
 
 
 def save_frames_to_video(frames, output_file, fps=30):
