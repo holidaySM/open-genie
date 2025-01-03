@@ -5,6 +5,7 @@ async-timeout==5.0.1
 attrs==24.2.0
 cffi==1.17.1
 cloudpickle==3.1.0
+docstring_parser==0.16
 einops==0.8.0
 filelock==3.16.1
 frozenlist==1.5.0
@@ -17,7 +18,9 @@ gym3==0.3.3
 idna==3.10
 imageio==2.36.1
 imageio-ffmpeg==0.3.0
+importlib_resources==6.4.5
 Jinja2==3.1.4
+jsonargparse==4.35.0
 lightning==2.2.4
 lightning-utilities==0.11.9
 MarkupSafe==3.0.2
@@ -52,5 +55,6 @@ torchmetrics==1.6.0
 torchvision==0.20.1
 tqdm==4.67.1
 triton==3.1.0
+typeshed_client==2.7.0
 typing_extensions==4.12.2
 yarl==1.18.3
