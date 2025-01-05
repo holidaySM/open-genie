@@ -46,20 +46,21 @@ model:
       - num_groups: 8
         num_channels: 512
     - - silu
+      - {}
     - - causal-conv3d
       - in_channels: 512
-        out_channels: 18
+        out_channels: 32
         kernel_size: 1
   dec_desc:
     - - causal-conv3d
-      - in_channels: 18
+      - in_channels: 32
         out_channels: 512
         kernel_size: 3
     - - video-residual
       - n_rep: 4
         in_channels: 512
     - - adaptive_group_norm
-      - dim_cond: 18
+      - dim_cond: 32
         num_groups: 8
         num_channels: 512
         has_ext: True
@@ -72,7 +73,7 @@ model:
         time_factor: 2
         space_factor: 2
     - - adaptive_group_norm
-      - dim_cond: 18
+      - dim_cond: 32
         num_groups: 8
         num_channels: 512
         has_ext: True
@@ -88,7 +89,7 @@ model:
         time_factor: 2
         space_factor: 2
     - - adaptive_group_norm
-      - dim_cond: 18
+      - dim_cond: 32
         num_groups: 8
         num_channels: 256
         has_ext: True
@@ -101,7 +102,7 @@ model:
         time_factor: 1
         space_factor: 2
     - - adaptive_group_norm
-      - dim_cond: 18
+      - dim_cond: 32
         num_groups: 8
         num_channels: 256
         has_ext: True
@@ -115,6 +116,7 @@ model:
       - num_groups: 8
         num_channels: 128
     - - silu
+      - {}
     - - causal-conv3d
       - in_channels: 128
         out_channels: 3
@@ -162,9 +164,10 @@ data:
   padding: none
   randomize: true
   transform: null
-  num_frames: 64
-  batch_size: 32
+  num_frames: 16
+  batch_size: 64
   output_format: c t h w
+  num_workers: 16
 
 trainer:
   max_epochs: 40
