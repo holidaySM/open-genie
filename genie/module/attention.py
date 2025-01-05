@@ -285,7 +285,7 @@ class SpatialAttention(Attention):
     ) -> Tensor:
         transpose = default(transpose, self.transpose)
         
-        pattern = 'b ... h w c' if transpose  else 'b c ... h w'
+        pattern = 'b ... h w c' if transpose else 'b c ... h w'
         inp = rearrange(video, f'{pattern} -> b ... h w c')
         b, *t, h, w, c = inp.shape
         
@@ -353,7 +353,7 @@ class TemporalAttention(Attention):
     ) -> Tensor:
         transpose = default(transpose, self.transpose)
         
-        pattern = 'b c t h w' if transpose else 'b t h w c'
+        pattern = 'b t h w c' if transpose else 'b c t h w'
         inp = rearrange(video, f'{pattern} -> b h w t c')
         b, h, w, *_ = inp.shape
         inp, ps = pack([inp], '* t c')
@@ -437,7 +437,7 @@ class SpaceTimeAttention(nn.Module):
             padding=(kernel_size - 1) // 2,
         )
         
-        pattern = 'b c t h w' if transpose else 'b t h w c'
+        pattern = 'b t h w c' if transpose else 'b c t h w'
         self.ffn = nn.Sequential(
             Rearrange(f'{pattern} -> b c t h w'),
             self.ffn,

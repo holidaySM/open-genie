@@ -174,17 +174,17 @@ trainer:
   devices: 1
   strategy: ddp_find_unused_parameters_false
   precision: bf16
-  log_every_n_steps: 1000
+  log_every_n_steps: 100
   limit_val_batches: 32
-  val_check_interval: 32
+  val_check_interval: 1000
   callbacks:
     - class_path: lightning.pytorch.callbacks.ModelCheckpoint
       init_args:
         monitor: val_loss
         save_last: true
-#  logger:
-#    - class_path: lightning.pytorch.loggers.WandbLogger
-#      init_args:
-#        project: open-genie
-#        name: genie-tokenizer
-#        version: null
+  logger:
+    - class_path: lightning.pytorch.loggers.WandbLogger
+      init_args:
+        project: open-genie
+        name: genie-tokenizer
+        version: null
