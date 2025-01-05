@@ -26,7 +26,6 @@ class FrameDiscriminator(nn.Module):
         kernel_size : int | Tuple[int, int] = 3,
         num_groups : int = 1,
         num_heads : int = 4,
-        dim_head : int = 32,
         use_attn : bool = False,
         use_blur : bool = True,
         act_fn : str = 'leaky',
@@ -62,7 +61,7 @@ class FrameDiscriminator(nn.Module):
             attn_block = nn.ModuleList([
                 SpatialAttention(
                     n_head=num_heads,
-                    d_head=dim_head,
+                    d_head=out_dim // num_heads,
                     d_inp=out_dim,
                 ),
                 ForwardBlock(

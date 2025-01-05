@@ -123,7 +123,8 @@ model:
         kernel_size: 3
   disc_kwargs:
     inp_size: [64, 64] # Size of input frames
-    model_dim: 512 # Dimension of the model
+    model_dim: 128 # Dimension of the model
+    num_heads: 8 # Number of (spatial) attention heads
     dim_mults: [1, 2, 4] # Channel multipliers
     down_step: [null, 2, 2] # Down-sampling steps
     inp_channels: 3
@@ -132,8 +133,6 @@ model:
     act_fn: leaky # Use LeakyReLU as activation function
     use_blur: True # Use BlurPooling for down-sampling
     use_attn: True # Discriminator can have spatial attention
-    num_heads: 4 # Number of (spatial) attention heads
-    dim_head: 32 # Dimension of each spatial attention heads
   #
   d_codebook: 10
   n_codebook: 1
@@ -165,7 +164,7 @@ data:
   randomize: true
   transform: null
   num_frames: 16
-  batch_size: 64
+  batch_size: 2
   output_format: c t h w
   num_workers: 16
 
@@ -175,7 +174,7 @@ trainer:
   devices: 1
   strategy: ddp_find_unused_parameters_false
   precision: bf16
-  log_every_n_steps: 16
+  log_every_n_steps: 1000
   limit_val_batches: 32
   val_check_interval: 32
   callbacks:
@@ -183,9 +182,9 @@ trainer:
       init_args:
         monitor: val_loss
         save_last: true
-  logger:
-    - class_path: lightning.pytorch.loggers.WandbLogger
-      init_args:
-        project: open-genie
-        name: genie-tokenizer
-        version: null
+#  logger:
+#    - class_path: lightning.pytorch.loggers.WandbLogger
+#      init_args:
+#        project: open-genie
+#        name: genie-tokenizer
+#        version: null

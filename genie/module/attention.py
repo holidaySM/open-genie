@@ -285,9 +285,9 @@ class SpatialAttention(Attention):
     ) -> Tensor:
         transpose = default(transpose, self.transpose)
         
-        pattern = 'b c ... h w' if transpose else 'b ... h w c'
+        pattern = 'b ... h w c' if transpose  else 'b c ... h w'
         inp = rearrange(video, f'{pattern} -> b ... h w c')
-        b, *t, h, w, c = video.shape
+        b, *t, h, w, c = inp.shape
         
         inp, t_ps = pack([inp], '* h w c')        
         inp, s_ps = pack([inp], 'b * c')
