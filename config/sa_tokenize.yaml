@@ -48,16 +48,16 @@ model:
   optimizer:
     class_path: torch.optim.AdamW
     init_args:
-      lr: 1e-3
+      lr: 3e-5
       weight_decay: 0.01
   #
   perceptual_model: vgg16
   perc_feat_layers: [features.6, features.13, features.18, features.25]
   gan_discriminate: frames
   gan_frames_per_batch: 4
-  gan_loss_weight: 1.
-  perc_loss_weight: 1.
-  quant_loss_weight: 1.
+  gan_loss_weight: 0.1
+  perc_loss_weight: 0.1
+  quant_loss_weight: 0.1
 
 data:
   root: /home/sm/Datasets/open-genie
