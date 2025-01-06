@@ -1,7 +1,6 @@
 *.vs*
 *.pytest*
 *.pyc
-*.ipynb
 
 *DS_Store*
 
